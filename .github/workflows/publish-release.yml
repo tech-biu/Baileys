@@ -46,8 +46,10 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
-      - name: Publish in NPM (as `baileys`)
-        run: npm publish --access public
+      - name: Publish in NPM (biu-biz scope)
+        run: |
+          npx json -I -f package.json -e "this.name='@biu-biz/baileys'"
+          npm publish --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
